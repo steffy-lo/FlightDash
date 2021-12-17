@@ -1,0 +1,190 @@
+{
+  "default": 
+  {
+    "voiceInfo": {
+      "lang": "en-US",
+      "speaker": "default",
+      "speed": 1
+    },
+
+    "phrases": 
+    {
+      "greeting": 
+      {
+        "first":
+        [{ "text": "Hello there! I'm Dash, your A.I travel agent. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes." }],
+        "repeat":
+        [{"text": "I'm always here ready to help for your travel advisory. You can ask me about flight availability, travel restrictions, or any questions you may have for travelling purposes." }]
+      },
+
+      "where_to": 
+      {
+        "first":
+        [{ "text": "I'll check the flight availability for you within the next week. Where are you from and where are you flying to?" }],
+        "repeat":
+        [{"text": "I was just checking, where are you from and where are you flying to?" }]
+      },
+
+      "which_country": 
+      {
+        "first":
+        [{ "text": "No problem, I can check that for you. Which country are you looking at?" }],
+        "repeat":
+        [{"text": "I was just saying, which country are you looking at?" }]
+      },
+
+      "flight_found": {
+        "first":
+        [
+          { "text": "Here are the flights I've found within the next week. "},
+          { "id": "available_flight", "type": "dynamic"}
+        ],
+        "repeat":
+        [
+          { "text": "I was just saying, here are the flights I've found within the next week. "},
+          { "id": "available_flight", "type": "dynamic"}
+        ]
+      },
+
+      "explain_restriction": {
+        "first":
+        [
+          { "text": "Here are the travel restrictions I've found for "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "travel_restriction", "type": "dynamic"}
+        ],
+        "repeat":
+        [
+          { "text": "I was just saying, here are the travel restrictions I've found for "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "travel_restriction", "type": "dynamic"}
+        ]
+      },
+
+      "explain_covid": {
+        "first":
+        [
+          { "text": "Here is what the overall covid situation looks like at "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "covid_situation", "type": "dynamic"}
+        ],
+        "repeat":
+        [
+          { "text": "I was just saying, here is what the overall covid situation looks like at "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "covid_situation", "type": "dynamic"}
+        ]
+      },
+
+      "yes": 
+      {
+        "first": 
+        [{ "text": "Great! And I can hear you too. Bye!" }]
+      },
+
+      "no": 
+      {
+        "first": 
+        [{ "text": "You will excuse me if I find that highly unlikely. After all, you responded to me and I can hear you just fine. Peace out!" }]
+      },
+
+
+      "i_will_call_back": 
+      [{ "text": "Okay, I'll call you later. Bye!" }],
+      "hello": 
+      {
+        "random": [
+          [{ "text": "Hello" }],
+          [{ "text": "Umm, hello?" }],
+          [{ "text": "Are you there?" }]
+        ]
+      },
+
+      "when_callback": [{ "text": "When can I call you back?" }],
+      "i_will_wait": 
+      {
+        "random": [
+          [{ "text": "Okay, I'll wait" }],
+          [{ "text": "Sure, I'll wait" }],
+          [{ "text": "Okay, no problem!" }]
+        ]
+      },
+
+      "i_can_hear_you": [{ "text": "Yes, I hear you" }],
+      "dont_understand": {
+        "random": [
+          [{ "text": "Sorry, could you say it again?" }],
+          [
+            {
+              "text": "Sorry, the connection dropped for a second. Could you say that again?"
+            }
+          ],
+          [{ "text": "Sorry, I didn't quite catch that." }],
+          [{ "text": "Could you say it one more time?" }]
+        ]
+      },
+      "dont_understand_request": [
+        { "text": "Sorry, i cant do it now. May be some day." }
+      ],
+      "dont_understand_question": [
+        { "text": "Sorry, i dont understand your question. Can you say it otherwise?" }
+      ],
+      "dont_understand_hangup": [
+        {
+          "text": "I'm sorry I can barely hear you. I'll try to call you later! Bye!"
+        }
+      ],
+      "dont_understand_forward": [
+        {
+          "text": "I'm sorry, let me transfer you to another agent. Please stand by!"
+        }
+      ],
+      "mhm": [{ "text": "Mgm..." }],
+      "yes_i_am_a_robot": [
+        {
+          "text": "Actually I am an advanced AI. Just don't tell my boss or I'll be out of a job."
+        }
+      ],
+      "is_that_all": [{ "text": "Is that all?" }],
+      "repeat_question": [{ "text": "Can you repeat the question, please?" }]
+    },
+    
+    "types": {},
+    "macros": 
+    {
+      "greeting": {},
+      "where_to": {},
+      "which_country": {},
+      "flight_found": {},
+      "explain_restriction": {},
+      "explain_covid": {},
+      "yes": {},
+      "no": {},
+      "i_will_call_back": {},
+      "see_you_soon": {},
+      "hello": {},
+      "when_callback": {},
+      "i_said": {},
+      "sorry_wont_call": {},
+      "i_will_wait": {},
+      "i_can_hear_you": {},
+      "dont_understand": {},
+      "dont_understand_request": {},
+      "dont_understand_question": {},
+      "dont_understand_hangup": {},
+      "dont_understand_forward": {},
+      "mhm": {},
+      "yes_i_am_a_robot": {},
+      "is_that_all": {},
+      "name": {},
+      "will_help": {},
+      "how_much": {},
+      "confirm_food_order": {},
+      "repeat_question": {}
+    }
+  }
+}

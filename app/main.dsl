@@ -1,0 +1,128 @@
+import "commonReactions/all.dsl";
+
+context 
+{
+    // declare input variables here. phone must always be declared. name is optional 
+    input phone: string;
+
+    // declare storage variables here 
+
+    // user input
+    country: string = "";
+    flight_info: string = "";
+
+    // ai output
+    available_flight: string = "";
+    travel_restriction: string = "";
+    covid_situation: string = "";
+
+}
+
+// declare external functions here 
+external function get_travel_restrictions(log: string): string;
+external function get_covid_situation(log: string): string;
+external function get_available_flight(log: string): string;
+
+// lines 28-42 start node 
+start node root 
+{
+    do //actions executed in this node 
+    {
+        #connectSafe($phone); // connecting to the phone number which is specified in index.js that it can also be in-terminal text chat
+        #waitForSpeech(2000); // give the person a second to start speaking 
+        #say("greeting"); // and greet them. Refer to phrasemap.json > "greeting" (line 12); note the variable $name for phrasemap use
+        wait *;
+    }
+    transitions // specifies to which nodes the conversation goes from here 
+    {
+        flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
+        covid19_cases: goto covid19_cases on #messageHasData("covid");
+    }
+}
+
+node flight_availability {
+    do {
+        #say("where_to");
+        wait *;
+    }
+    transitions
+    {
+        check_flights: goto check_flights on #messageHasData("flight_info");
+    }
+}
+
+node travel_restrictions {
+    do {
+        #say("which_country");
+        wait *;
+    }
+    transitions
+    {
+        check_travel_restrictions: goto check_travel_restrictions on #messageHasData("country");
+    }
+}
+
+node covid19_cases {
+    do {
+        #say("which_country");
+        wait *;
+    }
+    transitions
+    {
+        check_covid: goto check_covid on #messageHasData("country");
+    }
+}
+
+node check_flights {
+    do {
+        set $flight_info = #messageGetData("flight info")[0]?.value??"";
+        set $available_flight = external get_available_flight($flight_info);
+        #say("flight_found", {available_flight: $available_flight});
+    }
+}
+
+node check_travel_restrictions {
+    do {
+        set $country = #messageGetData("country")[0]?.value??"";
+        set $travel_restriction = external get_travel_restrictions($country);
+        #say("explain_restriction", {travel_restriction: $travel_restriction, country: $country});
+    }
+}
+
+node check_covid {
+    do {
+        set $country = #messageGetData("country")[0]?.value??"";
+        set $covid_situation = external get_covid_situation($country);
+        #say("explain_covid", {covid_situation: $covid_situation, country: $country});
+    }
+}
+
+node yes
+{
+    do 
+    {
+        #say("yes");
+        exit;
+    }
+}
+
+node no
+{
+    do 
+    {
+        #say("no");
+        exit;
+    }
+}
+
+digression how_are_you
+{
+    conditions {on #messageHasIntent("how_are_you");}
+    do 
+    {
+        #sayText("I'm well, thank you!", repeatMode: "ignore"); 
+        #repeat(); // let the app know to repeat the phrase in the node from which the digression was called, when go back to the node 
+        return; // go back to the node from which we got distracted into the digression 
+    }
+}

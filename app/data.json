@@ -1,0 +1,254 @@
+{
+  "version": "v2",
+  "intents": 
+  {
+    "yes": 
+    {
+      "includes": [
+        "yes",
+        "correct",
+        "sure",
+        "absolutely",
+        "yes siree bob",
+        "right",
+        "yep",
+        "you got it",
+        "I would",
+        "yeah",
+        "that's right", 
+        "I would"
+      ],
+      "excludes": [
+        "fuck off"
+      ]
+    },
+    "no": {
+      "includes": [
+        "no",
+        "definitely not",
+        "wrong",
+        "incorrect",
+        "I do not",
+        "I don't",
+        "I would not",
+        "I wouldn't"
+      ],
+      "excludes": [
+        "no, I want a delivery",
+        "no, I want it delivered"
+      ]
+    },
+
+    "bye": {
+      "includes": [
+        "bye",
+        "good bye",
+        "thanks bye",
+        "nevermind",
+        "forget about it",
+        "we're done",
+        "take it easy",
+        "peace out boo",
+        "peace"
+      ]
+    }
+  },
+ 
+  "entities": 
+  {
+    "rating": 
+    {
+      "open_set": false,
+      "values": [
+        {
+          "value": "1",
+          "synonyms": ["1", "one", "zero", "horrible", "worst ever", "the worst", "awful", "horrid", "despicable", "detestable", "very bad"]
+        },
+        {
+          "value": "2",
+          "synonyms": ["2", "two", "bad", "quite bad", "pretty bad", "not good", "crappy"]
+        },
+        {
+          "value": "3",
+          "synonyms": ["3", "three", "alright", "okay", "just okay"]
+        },
+        {
+          "value": "4",
+          "synonyms": ["4", "four", "good", "pretty good", "quite good", "good enough"]
+        },
+        {
+          "value": "5",
+          "synonyms": ["5", "five", "amazing", "incrdible", "just grand", "perfct", "wondrful", "very good"]
+        }
+      ],
+      "includes": [
+        "I would say it was (1)[rating]",
+        "I would say it was (2)[rating]",
+        "I would say it was (3)[rating]",
+        "I would say it was (4)[rating]",
+        "I would say it was (5)[rating]",
+        "(1)[rating]",
+        "(2)[rating]",
+        "(3)[rating]",
+        "(4)[rating]",
+        "(5)[rating]",
+        "I had an (1)[rating] experience",
+        "I had an (2)[rating] experience",
+        "I had an (3)[rating] experience",
+        "I had an (4)[rating] experience",
+        "I had an (5)[rating] experience",
+        "I'll give you a (1)[rating]",
+        "I'll give you a (2)[rating]",
+        "I'll give you a (3)[rating]",
+        "I'll give you a (4)[rating]",
+        "I'll give you a (5)[rating]"
+      ]
+    },
+    "travel_restrictions": {
+      "open_set": true,
+      "values": [
+        {
+          "value": "travel restrictions",
+          "synonyms": ["restrictions for travelling", "travel requirements"]
+        },
+        {
+          "value": "quarantine",
+          "synonyms": ["quarantine requirements", "quarantine period", "quarantine duration"]
+        },
+        {
+          "value": "vaccination",
+          "synonyms": ["vaccine", "vcaccination status", "vaccine status"]
+        }
+      ],
+      "includes": [
+        "What are the (travel restrictions)[travel_restrictions]?",
+        "Do you know the (travel restrictions)[travel_restrictions]?",
+        "How strict are the (travel restrictions)[travel_restrictions]?",
+        "Is there any (quarantine)[travel_restrictions]?",
+        "How long is the (quarantine)[travel_restrictions]?",
+        "Do I need to (quarantine)[travel_restrictions]?",
+        "What about (vaccination)[travel_restrictions]?",
+        "Do you need (vaccination)[travel_restrictions]?",
+        "Is (vaccination)[travel_restrictions] required?"
+      ]
+    },
+    "flight_availability": {
+      "open_set": true,
+      "values": [
+        {
+          "value": "flights",
+          "synonyms": ["available flights", "flights available", "bookings", "available bookings", "bookings available", "airline bookings", "airline seatings"]
+        }
+      ],
+      "includes": [
+        "Tell me the (flights)[flight_availability]",
+        "Let me know about the (flights)[flight_availability]",
+        "What are the (flights)[flight_availability]",
+        "How many (flights)[flight_availability]?",
+        "Are there any (flights)[flight_availability]?"
+      ]
+    },
+    "covid": {
+      "open_set": true,
+      "values": [
+        {
+          "value": "covid",
+          "synonyms": ["covid-19", "covid19", "covid cases", "covid situation", "number of cases", "case numbers", "covid numbers", "cases", "numbers", "situation"]
+        }
+      ],
+      "includes": [
+        "How is the (covid)[covid] looking?",
+        "What is the (covid)[covid] like?",
+        "How bad is the (covid)[covid]?",
+        "Tell me the (covid)[covid]",
+        "Do you know the (covid)[covid]?",
+        "What about the (covid)[covid]?"
+      ]
+    },
+    "flight_info": {
+      "open_set": true,
+      "values": [
+        {
+          "value": "from Singapore to Jakarta",
+          "synonyms": ["go to Singapore from Jakarta"]
+        },
+        {
+          "value": "from Canada to South Korea",
+          "synonyms": ["go to South Korea from Canada"]
+        },
+        {
+          "value": "from Germany to Spain",
+          "synonyms": ["go to Spain from Germany"]
+        },
+        {
+          "value": "from Australia to Hawaii",
+          "synonyms": ["go to Hawaii from Australia"]
+        }
+      ],
+      "includes": [
+        "I would like to go (from Singapore to Jakarta)[flight_info]",
+        "I'm thinking (from Canada to South Korea)[flight_info]",
+        "What about (from Germany to Spain)[flight_info]",
+        "I'm looking at going (from Australia to Hawaii)[flight_info]"
+      ]
+    },
+    "country": {
+      "open_set": false,
+      "values": [
+        {
+          "value": "US",
+          "synonyms": ["U.S.", "United States", "USA", "United States of America"]
+        },
+        {
+          "value": "Canada"
+        },
+        {
+          "value": "China"
+        },
+        {
+          "value": "India"
+        },
+        {
+          "value": "UK",
+          "synonyms": ["U.K.", "United Kingdom", "Great Britain", "Britain", "England"]
+        },
+        {
+          "value": "Russia"
+        },
+        {
+          "value": "Japan"
+        },
+        {
+          "value": "Korea"
+        },
+        {
+          "value": "Italy"
+        },
+        {
+          "value": "Germany"
+        },
+        {
+          "value": "Spain"
+        },
+        {
+          "value": "France"
+        },
+        {
+          "value": "Australia"
+        },
+        {
+          "value": "Vietnam"
+        },
+        {
+          "value": "Thailand"
+        },
+        {
+          "value": "Singapore"
+        },
+        {
+          "value": "Indonesia"
+        }
+      ]
+    }
+  }
+}

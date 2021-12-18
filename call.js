@@ -15,9 +15,9 @@ const main = async () => {
   app.setExternal("get_travel_restrictions", async (args)=> {
     //TODO: implement your external function here
     
-    console.log(`OK, ${args.log} is it? Let me check...`);
+    console.log(`OK, ${args.country} is it? Let me check...`);
     let accessToken = await getAccessToken();
-    let data = await getTravelRestrictions(accessToken, args.log);
+    let data = await getTravelRestrictions(accessToken, args.country);
 
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
@@ -29,7 +29,7 @@ const main = async () => {
 
   app.setExternal("get_covid_situation", async (args)=> {
     //TODO: implement your external function here
-    let data = await getCovidData(args.log);
+    let data = await getCovidData(args.country);
     let totalCases = data.cases;
     let todayCases = data.todayCases;
     let deaths = data.deaths;

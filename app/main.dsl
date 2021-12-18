@@ -19,9 +19,9 @@ context
 }
 
 // declare external functions here 
-external function get_travel_restrictions(log: string): string;
-external function get_covid_situation(log: string): string;
-external function get_available_flight(log: string): string;
+external function get_travel_restrictions(country: string): string;
+external function get_covid_situation(country: string): string;
+external function get_available_flight(flight_info: string): string;
 
 // lines 28-42 start node 
 start node root 
@@ -36,6 +36,7 @@ start node root
     transitions // specifies to which nodes the conversation goes from here 
     {
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        check_flights: goto check_flights on #messageHasData("flight_info");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
     }
@@ -76,13 +77,14 @@ node covid19_cases {
 
 node check_flights {
     do {
-        set $flight_info = #messageGetData("flight info")[0]?.value??"";
+        set $flight_info = #messageGetData("flight_info")[0]?.value??"";
         set $available_flight = external get_available_flight($flight_info);
         #say("flight_found", {available_flight: $available_flight});
         #say("more_questions");
         wait *;
     }
     transitions {
+        check_flights: goto check_flights on #messageHasData("flight_info");
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
@@ -99,6 +101,7 @@ node check_travel_restrictions {
         wait *;
     }
     transitions {
+        check_flights: goto check_flights on #messageHasData("flight_info");
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
@@ -115,6 +118,7 @@ node check_covid {
         wait *;
     }
     transitions {
+        check_flights: goto check_flights on #messageHasData("flight_info");
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");

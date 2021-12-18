@@ -16,9 +16,9 @@ async function main()
   app.setExternal("get_travel_restrictions", async (args)=> {
     //TODO: implement your external function here
     
-    console.log(`OK, ${args.log} is it? Let me check...`);
+    console.log(`OK, ${args.country} is it? Let me check...`);
     let accessToken = await getAccessToken();
-    let data = await getTravelRestrictions(accessToken, args.log);
+    let data = await getTravelRestrictions(accessToken, args.country);
 
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
@@ -30,7 +30,7 @@ async function main()
 
   app.setExternal("get_covid_situation", async (args)=> {
     //TODO: implement your external function here
-    let data = await getCovidData(args.log);
+    let data = await getCovidData(args.country);
     let totalCases = data.cases;
     let todayCases = data.todayCases;
     let deaths = data.deaths;
@@ -43,7 +43,9 @@ async function main()
     //TODO: implement your external function here
     console.log(args);
     let data = await getFlightOffers();
-
+    if (!data || data.length <= 0) {
+      return "Sorry, no available flights are found at this time. Please try again later."
+    }
     //console.log(data);
     return `\n---Flight 1---\nPrice: ${data[0].price.total}${data[0].price.currency}\nDuration: ${data[0].itineraries[0].duration}\nItinerary: ${data[0].itineraries[0].segments[0].departure.iataCode} - ${data[0].itineraries[0].segments[0].arrival.iataCode} - ${data[0].itineraries[0].segments[1].arrival.iataCode}
     \n\n---Flight 2---\nPrice: ${data[1].price.total}${data[1].price.currency}\nDuration: ${data[1].itineraries[0].duration}\nItinerary: ${data[1].itineraries[0].segments[0].departure.iataCode} - ${data[1].itineraries[0].segments[0].arrival.iataCode} - ${data[1].itineraries[0].segments[1].arrival.iataCode}

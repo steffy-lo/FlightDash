@@ -169,27 +169,27 @@
       "open_set": true,
       "values": [
         {
-          "value": "from Singapore to Jakarta",
-          "synonyms": ["go to Singapore from Jakarta"]
+          "value": "Singapore to Jakarta",
+          "synonyms": ["go to Singapore from Jakarta", "from Singapore to Jakarta"]
         },
         {
-          "value": "from Canada to South Korea",
-          "synonyms": ["go to South Korea from Canada"]
+          "value": "Canada to South Korea",
+          "synonyms": ["go to South Korea from Canada", "from Canada to South Korea"]
         },
         {
-          "value": "from Germany to Spain",
-          "synonyms": ["go to Spain from Germany"]
+          "value": "Germany to Spain",
+          "synonyms": ["go to Spain from Germany", "from Germany to Spain"]
         },
         {
-          "value": "from Australia to Hawaii",
-          "synonyms": ["go to Hawaii from Australia"]
+          "value": "Australia to Hawaii",
+          "synonyms": ["go to Hawaii from Australia", "from Australia to Hawaii"]
         }
       ],
       "includes": [
-        "I would like to go (from Singapore to Jakarta)[flight_info]",
-        "I'm thinking (from Canada to South Korea)[flight_info]",
-        "What about (from Germany to Spain)[flight_info]",
-        "I'm looking at going (from Australia to Hawaii)[flight_info]"
+        "I would like to go from (Singapore to Jakarta)[flight_info]",
+        "I'm thinking from (Canada to South Korea)[flight_info]",
+        "Flights from (Germany to Spain)[flight_info]",
+        "I'm looking at going from (Australia to Hawaii)[flight_info]"
       ]
     },
     "country": {

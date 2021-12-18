@@ -3,47 +3,16 @@ ai: Hello there! I'm Dash, your AI assistant to answer all your travel concerns.
 [
   {
     "type": "Data",
-    "skill": "76e51652f5378dc1ddc72855758453cf:v2",
-    "weight": 0.97192,
+    "skill": "6db6264d7147c6cdb572e22d6b3fafd6:v2",
+    "weight": 0.99988,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 19
-    },
-    "factType": "flight_availability",
-    "data": {
-      "value": "flight availability"
-    }
-  },
-  {
-    "type": "Intent",
-    "skill": "sentiment",
-    "weight": -1,
-    "likelihood": -1,
-    "location": {
-      "start": 0,
-      "end": 1
-    },
-    "intent": null,
-    "state": "neutral",
-    "sentenceType": "statement"
-  }
-]
-human: flight availability
-ai: I'll check the flight availability for you within the next week. Where are you from and where are you flying to?
-[
-  {
-    "type": "Data",
-    "skill": "76e51652f5378dc1ddc72855758453cf:v2",
-    "weight": 0.83815,
-    "likelihood": 1,
-    "location": {
-      "start": 0,
-      "end": 20
+      "end": 25
     },
     "factType": "flight_info",
     "data": {
-      "value": "Toronto to Singapore"
+      "value": "Singapore to Jakarta"
     }
   },
   {
@@ -53,11 +22,43 @@ ai: I'll check the flight availability for you within the next week. Where are y
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 2
+      "end": 3
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
   }
 ]
-human: Toronto to Singapore
+human: from Singapore to Jakarta
+ai: Here are the flights I've found within the next week. 
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "6db6264d7147c6cdb572e22d6b3fafd6:v2",
+    "weight": 0.95124,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "no",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: no
+ai: Have a nice day! Bye!

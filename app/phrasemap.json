@@ -12,7 +12,7 @@
       "greeting": 
       {
         "first":
-        [{ "text": "Hello there! I'm Dash, your A.I travel agent. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes." }],
+        [{ "text": "Hello there! I'm Dash, your A.I assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes." }],
         "repeat":
         [{"text": "I'm always here ready to help for your travel advisory. You can ask me about flight availability, travel restrictions, or any questions you may have for travelling purposes." }]
       },

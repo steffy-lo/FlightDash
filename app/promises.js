@@ -38,7 +38,6 @@ async function getTravelRestrictions(accessToken, country) {
         },
       }
     );
-    //console.log(res.data.data);
     return res.data.data;
   } catch (error) {
     console.error(error);
@@ -48,15 +47,26 @@ async function getTravelRestrictions(accessToken, country) {
 async function getFlightOffers() {
   try {
     const res = await amadeus.shopping.flightOffersSearch.get({
-      originLocationCode: "SYD",
-      destinationLocationCode: "BKK",
-      departureDate: "2022-06-01",
-      adults: "2",
+      originLocationCode: "YYZ",
+      destinationLocationCode: "SIN",
+      departureDate: "2021-12-22",
+      adults: "1",
+      currencyCode:"CAD",
+      max:3
     });
-    console.log(res.data);
+    return res.data;
   } catch (error) {
     console.error(error);
   }
 }
 
-module.exports = { getAccessToken, getTravelRestrictions, getFlightOffers };
+async function getCovidData(country){
+    try {
+        const res = await axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday&strict&query`)
+        return res.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports = { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData };

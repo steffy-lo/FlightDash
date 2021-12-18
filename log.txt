@@ -1,14 +1,14 @@
 ####################################################################################################
-ai: Hello there! I'm Dash, your A.I travel agent. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
+ai: Hello there! I'm Dash, your A.I assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
 [
   {
     "type": "Data",
     "skill": "76e51652f5378dc1ddc72855758453cf:v2",
-    "weight": 0.99829,
+    "weight": 0.99498,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 19
+      "end": 18
     },
     "factType": "travel_restrictions",
     "data": {
@@ -29,7 +29,7 @@ ai: Hello there! I'm Dash, your A.I travel agent. You can ask me about flight av
     "sentenceType": "statement"
   }
 ]
-human: travel restrictions
+human: travel resrictions
 ai: No problem, I can check that for you. Which country are you looking at?
 [
   {

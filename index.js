@@ -1,6 +1,6 @@
 const dasha = require("@dasha.ai/sdk");
 const fs = require("fs");
-const { getAccessToken, getTravelRestrictions, getFlightOffers } = require("./app/promises");
+const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData } = require("./app/promises");
 
 async function main() 
 {
@@ -28,17 +28,26 @@ async function main()
     return `\n${summary}\n\nDisease Risk Level: ${diseaseRiskLevel}.`;
   });
 
-  app.setExternal("get_covid_situation", (args)=> {
+  app.setExternal("get_covid_situation", async (args)=> {
     //TODO: implement your external function here
-    console.log(args.log);
-    return "Risk level is quite high."
+    let data = await getCovidData(args.log);
+    let totalCases = data.cases;
+    let todayCases = data.todayCases;
+    let deaths = data.deaths;
+    let todayDeaths = data.todayDeaths;
+    
+    return "\nTotal cases: " + totalCases + "\nToday cases: " + todayCases + "\nTotal deaths: " + deaths + "\nToday deaths: " + todayDeaths;
   });
 
-  app.setExternal("get_available_flight", (args)=> {
+  app.setExternal("get_available_flight", async (args)=> {
     //TODO: implement your external function here
-    console.log(args.log);
-    getFlightOffers();
-    return "None at this time."
+    console.log(args);
+    let data = await getFlightOffers();
+
+    //console.log(data);
+    return `\n---Flight 1---\nPrice: ${data[0].price.total}${data[0].price.currency}\nDuration: ${data[0].itineraries[0].duration}\nItinerary: ${data[0].itineraries[0].segments[0].departure.iataCode} - ${data[0].itineraries[0].segments[0].arrival.iataCode} - ${data[0].itineraries[0].segments[1].arrival.iataCode}
+    \n\n---Flight 2---\nPrice: ${data[1].price.total}${data[1].price.currency}\nDuration: ${data[1].itineraries[0].duration}\nItinerary: ${data[1].itineraries[0].segments[0].departure.iataCode} - ${data[1].itineraries[0].segments[0].arrival.iataCode} - ${data[1].itineraries[0].segments[1].arrival.iataCode}
+    \n\n---Flight 3---\nPrice: ${data[2].price.total}${data[2].price.currency}\nDuration: ${data[2].itineraries[0].duration}\nItinerary: ${data[2].itineraries[0].segments[0].departure.iataCode} - ${data[2].itineraries[0].segments[0].arrival.iataCode} - ${data[2].itineraries[0].segments[1].arrival.iataCode}`
   });
 
   await app.start();

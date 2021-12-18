@@ -1,7 +1,8 @@
 const dasha = require("@dasha.ai/sdk");
 const fs = require("fs");
 const _ = require("lodash");
-const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData } = require("./app/promises");
+const airports = require('airport-codes');
+const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData, getIATA } = require("./app/promises");
 
 async function main() 
 {
@@ -15,11 +16,28 @@ async function main()
   app.ttsDispatcher = () => "dasha";
 
   app.setExternal("get_travel_restrictions", async (args)=> {
-    //TODO: implement your external function here
-    
     console.log(`OK, ${args.country} is it? Let me check...`);
+    const countryMappings = {
+      "Singapore": "SG",
+      "United States": "US",
+      "Canada": "CA",
+      "China": "CN",
+      "India": "IN",
+      "United Kingdom": "UK",
+      "Indonesia": "IN",
+      "Russia": "RU",
+      "Japan": "JP",
+      "South Korea": "KR",
+      "Italy": "IT",
+      "Germany": "DE",
+      "Spain": "ES",
+      "France": "FR",
+      "Australia": "AU",
+      "Vietnam": "VN",
+      "Thailand": "TH"
+    }
     let accessToken = await getAccessToken();
-    let data = await getTravelRestrictions(accessToken, args.country);
+    let data = await getTravelRestrictions(accessToken, countryMappings[args.country]);
 
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
@@ -30,7 +48,6 @@ async function main()
   });
 
   app.setExternal("get_covid_situation", async (args)=> {
-    //TODO: implement your external function here
     let data = await getCovidData(args.country);
     let totalCases = data.cases;
     let todayCases = data.todayCases;
@@ -41,10 +58,13 @@ async function main()
   });
 
   app.setExternal("get_available_flight", async (args)=> {
-    //TODO: implement your external function here
-    console.log(args);
+    let [origin, destination] = args.flight_info.split(" to ");
+    origin = origin.charAt(0).toUpperCase() + origin.toLowerCase().slice(1);
+    destination = destination.charAt(0).toUpperCase() + destination.toLowerCase().slice(1);
+    const originIATAs = airports.where({ city: origin }).map(x => x.attributes.iata);
+    const destinationIATAs = airports.where({ city: destination }).map(x => x.attributes.iata);
     let returnString = "";
-    let data = await getFlightOffers();
+    let data = await getFlightOffers(originIATAs, destinationIATAs);
     if (!data || data.length <= 0) {
       return "Sorry, no available flights are found at this time. Please try again later."
     }else{

@@ -20,7 +20,7 @@
       "where_to": 
       {
         "first":
-        [{ "text": "I'll check the flight availability for you within the next week. Where are you from and where are you flying to?" }],
+        [{ "text": "I'll check the flight availability for today. Where are you from and where are you flying to?" }],
         "repeat":
         [{"text": "I was just checking, where are you from and where are you flying to?" }]
       },
@@ -36,12 +36,12 @@
       "flight_found": {
         "first":
         [
-          { "text": "Here are the flights I've found within the next week. "},
+          { "text": "Here are the flights I've found for today."},
           { "id": "available_flight", "type": "dynamic"}
         ],
         "repeat":
         [
-          { "text": "I was just saying, here are the flights I've found within the next week. "},
+          { "text": "I was just saying, here are the flights I've found within the next week."},
           { "id": "available_flight", "type": "dynamic"}
         ]
       },

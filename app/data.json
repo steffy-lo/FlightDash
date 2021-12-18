@@ -31,7 +31,8 @@
         "I do not",
         "I don't",
         "I would not",
-        "I wouldn't"
+        "I wouldn't",
+        "no thank you"
       ],
       "excludes": [
         "no, I want a delivery",
@@ -196,8 +197,8 @@
       "open_set": false,
       "values": [
         {
-          "value": "US",
-          "synonyms": ["U.S.", "United States", "USA", "United States of America"]
+          "value": "United States",
+          "synonyms": ["U.S.", "US", "USA", "United States of America"]
         },
         {
           "value": "Canada"
@@ -209,8 +210,8 @@
           "value": "India"
         },
         {
-          "value": "UK",
-          "synonyms": ["U.K.", "United Kingdom", "Great Britain", "Britain", "England"]
+          "value": "United Kingdom",
+          "synonyms": ["U.K.", "UK", "Great Britain", "Britain", "England"]
         },
         {
           "value": "Russia"
@@ -219,7 +220,7 @@
           "value": "Japan"
         },
         {
-          "value": "Korea"
+          "value": "South Korea"
         },
         {
           "value": "Italy"
@@ -243,8 +244,8 @@
           "value": "Thailand"
         },
         {
-          "value": "SG",
-          "synonyms": ["Singapore"]
+          "value": "Singapore",
+          "synonyms": ["SG, Singapura"]
         },
         {
           "value": "Indonesia"

@@ -44,32 +44,41 @@ async function getTravelRestrictions(accessToken, country) {
   }
 }
 
-async function getFlightOffers() {
+async function getFlightOffers(originIATAs, destinationIATAs) {
   try {
-    const res = await amadeus.shopping.availability.flightAvailabilities.post(JSON.stringify({
-        "originDestinations": [
-          {
-            "id": "1",
-            "originLocationCode": "YYZ",
-            "destinationLocationCode": "SIN",
-            "departureDateTime": {
-              "date": "2021-12-24",
-              "time": "21:15:00"
+    const todayDate = new Date().toISOString().slice(0, 10);
+    for (let i = 0; i < originIATAs.length; i++) {
+      for (let j = 0; j < destinationIATAs.length; j++) {
+        if (!originIATAs[i] || !destinationIATAs[j]) {
+          continue;
+        }
+        const res = await amadeus.shopping.availability.flightAvailabilities.post(JSON.stringify({
+          "originDestinations": [
+            {
+              "id": "1",
+              "originLocationCode": originIATAs[i],
+              "destinationLocationCode": destinationIATAs[j],
+              "departureDateTime": {
+                "date": todayDate
+              }
             }
-          }
-        ],
-        "travelers": [
-          {
-            "id": "1",
-            "travelerType": "ADULT"
-          }
-        ],
-        "sources": [
-          "GDS"
-        ]
-      }));
-
-    return res.data;
+          ],
+          "travelers": [
+            {
+              "id": "1",
+              "travelerType": "ADULT"
+            }
+          ],
+          "sources": [
+            "GDS"
+          ]
+        }));
+        if (res.data) {
+          return res.data;
+        }
+      }
+    }
+    return null;
   } catch (error) {
     console.error(error);
   }

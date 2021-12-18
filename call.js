@@ -6,6 +6,8 @@ const cors = require("cors");
 const expressApp = express();
 expressApp.use(express.json());
 expressApp.use(cors());
+const airports = require('airport-codes');
+const _ = require("lodash");
 
 const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData } = require("./app/promises");
 
@@ -13,22 +15,38 @@ const main = async () => {
   const app = await dasha.deploy(`${__dirname}/app`);
 
   app.setExternal("get_travel_restrictions", async (args)=> {
-    //TODO: implement your external function here
-    
     console.log(`OK, ${args.country} is it? Let me check...`);
+    const countryMappings = {
+        "Singapore": "SG",
+        "United States": "US",
+        "Canada": "CA",
+        "China": "CN",
+        "India": "IN",
+        "United Kingdom": "UK",
+        "Indonesia": "IN",
+        "Russia": "RU",
+        "Japan": "JP",
+        "South Korea": "KR",
+        "Italy": "IT",
+        "Germany": "DE",
+        "Spain": "ES",
+        "France": "FR",
+        "Australia": "AU",
+        "Vietnam": "VN",
+        "Thailand": "TH"
+      }
     let accessToken = await getAccessToken();
-    let data = await getTravelRestrictions(accessToken, args.country);
+    let data = await getTravelRestrictions(accessToken, countryMappings[args.country]);
 
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
     let entry = data.areaAccessRestriction.entry.text; //in HTML
     let exit = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements."; //in HTML
     console.log(data.areaAccessRestriction);
-    return `\n${summary}\n\nDisease Risk Level: ${diseaseRiskLevel}.`;
+    return `\n${summary}\n\nDisease risk level is currently ${diseaseRiskLevel}.`;
   });
 
   app.setExternal("get_covid_situation", async (args)=> {
-    //TODO: implement your external function here
     let data = await getCovidData(args.country);
     let totalCases = data.cases;
     let todayCases = data.todayCases;
@@ -39,11 +57,13 @@ const main = async () => {
   });
 
   app.setExternal("get_available_flight", async (args)=> {
-    //TODO: implement your external function here
-    console.log(args);
-    console.log(args);
+    let [origin, destination] = args.flight_info.split(" to ");
+    origin = origin.charAt(0).toUpperCase() + origin.toLowerCase().slice(1);
+    destination = destination.charAt(0).toUpperCase() + destination.toLowerCase().slice(1);
+    const originIATAs = airports.where({ city: origin }).map(x => x.attributes.iata);
+    const destinationIATAs = airports.where({ city: destination }).map(x => x.attributes.iata);
     let returnString = "";
-    let data = await getFlightOffers();
+    let data = await getFlightOffers(originIATAs, destinationIATAs);
     if (!data || data.length <= 0) {
       return "Sorry, no available flights are found at this time. Please try again later."
     }else{
@@ -65,9 +85,17 @@ const main = async () => {
       }
       flightOffers = _.groupBy(flightOffers, 'duration');
       Object.keys(flightOffers).forEach((duration, i) => {
-        returnString += `\n---Flight ${i+1}---\nDuration: ${duration}\nItinerary:`;
-        flightOffers[duration].map((segment) => {
-          returnString +=`\nDepart from ${segment.departure.iataCode} at ${segment.departure.at} - Arrive in ${segment.arrival.iataCode} at ${segment.arrival.at}`;
+        const [hours, minutes] = duration.substring(2, duration.length - 1).split("H");
+        returnString += `\nFlight ${i+1} will be ${hours} hours and ${minutes} minutes.`;
+        flightOffers[duration].map((segment, i) => {
+          if (i == 0) {
+            const [HH, MM] = segment.departure.at.substring(11, segment.departure.at.length - 2).split(":");
+            returnString +=`\nDeparting from ${origin} at ${HH}:${MM}`;
+          }
+          if (i == flightOffers[duration].length - 1) {
+            const [HH, MM] = segment.arrival.at.substring(11, segment.arrival.at.length - 2).split(":");
+            returnString += ` and arriving in ${destination} at ${HH}:${MM}`;
+          }
         });
         returnString += "\n";
       });

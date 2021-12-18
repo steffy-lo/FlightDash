@@ -243,7 +243,8 @@
           "value": "Thailand"
         },
         {
-          "value": "Singapore"
+          "value": "SG",
+          "synonyms": ["Singapore"]
         },
         {
           "value": "Indonesia"

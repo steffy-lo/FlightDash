@@ -1,6 +1,6 @@
 const dasha = require("@dasha.ai/sdk");
 const fs = require("fs");
-
+const { getAccessToken, getTravelRestrictions, getFlightOffers } = require("./app/promises");
 
 async function main() 
 {
@@ -13,10 +13,19 @@ async function main()
 
   app.ttsDispatcher = () => "dasha";
 
-  app.setExternal("get_travel_restrictions", (args)=> {
+  app.setExternal("get_travel_restrictions", async (args)=> {
     //TODO: implement your external function here
-    console.log(args.log);
-    return "None at this time."
+    
+    console.log(`OK, ${args.log} is it? Let me check...`);
+    let accessToken = await getAccessToken();
+    let data = await getTravelRestrictions(accessToken, args.log);
+
+    let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
+    let diseaseRiskLevel = data.diseaseRiskLevel;
+    let entry = data.areaAccessRestriction.entry.text; //in HTML
+    let exit = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements."; //in HTML
+    console.log(data.areaAccessRestriction);
+    return `\n${summary}\n\nDisease Risk Level: ${diseaseRiskLevel}.`;
   });
 
   app.setExternal("get_covid_situation", (args)=> {
@@ -28,6 +37,7 @@ async function main()
   app.setExternal("get_available_flight", (args)=> {
     //TODO: implement your external function here
     console.log(args.log);
+    getFlightOffers();
     return "None at this time."
   });
 

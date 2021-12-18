@@ -1,2 +1,143 @@
 ####################################################################################################
-ai: Hello there! I'm Dash, your AI assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
+ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
+[
+  {
+    "type": "Data",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 0.99967,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 24
+    },
+    "factType": "flight_info",
+    "data": {
+      "value": "from london to singapore"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: from london to singapore
+ai: Here are the flights I've found for today.Sorry, no available flights are found at this time. Please try again later.
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Data",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 0.99978,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 25
+    },
+    "factType": "flight_info",
+    "data": {
+      "value": "from toronto to singapore"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: from toronto to singapore
+ai: Here are the flights I've found for today.Sorry, no available flights are found at this time. Please try again later.
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Data",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 0.99859,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 20
+    },
+    "factType": "flight_info",
+    "data": {
+      "value": "jakarta to singapore"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: jakarta to singapore
+ai: Here are the flights I've found for today.
+---Flight 1---
+Duration: PT1H50M
+Itinerary:
+Depart from CGK at 2021-12-18T22:05:00 - Arrive in SIN at 2021-12-19T00:55:00
+
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Data",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 0.99824,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 19
+    },
+    "factType": "flight_info",
+    "data": {
+      "value": "london to singapore"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: london to singapore
+ai: Here are the flights I've found for today.
+---Flight 1---
+Duration: PT12H45M
+Itinerary:
+Depart from YXU at 2021-12-18T10:05:00 - Arrive in YYZ at 2021-12-18T10:50:00
+Depart from YYZ at 2021-12-18T12:00:00 - Arrive in EWR at 2021-12-18T13:35:00
+Depart from JFK at 2021-12-18T20:55:00 - Arrive in SIN at 2021-12-19T11:50:00
+Depart from YTZ at 2021-12-18T14:10:00 - Arrive in EWR at 2021-12-18T15:40:00
+
+ai: Anything else I can help you with?

@@ -477,7 +477,7 @@ recognition.onspeechend = function() {
     console.log("No Activity");
 };
 recognition.onerror = function() {
-    instruction.text("Try Again");
+    console.log("Try Again");
 };
 recognition.onresult = function(event) {
     var current = event.resultIndex;
@@ -541,6 +541,7 @@ const main = async ()=>{
             runButton.hidden = false;
             runButton.disabled = false;
             hangupButton.hidden = true;
+            recognition.abort();
         }
     };
     runButton.addEventListener("click", async ()=>{

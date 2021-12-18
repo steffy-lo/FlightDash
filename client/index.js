@@ -10,7 +10,7 @@ var recognition = new speechRecognition();
 recognition.continuous = true
 
 recognition.onstart = function() {
- console.log("Voice Recognition is On")
+ console.log("Voice Recognition is On");
 //  translator.voiceToText(function (transcript) {
 //     console.log(transcript);
 //   }, 'en-US');
@@ -21,7 +21,7 @@ recognition.onspeechend = function() {
 }
 
 recognition.onerror = function() {
- instruction.text("Try Again")
+ console.log("Try Again")
 }
 
 recognition.onresult = function(event) {
@@ -84,6 +84,7 @@ const main = async () => {
       runButton.hidden = false;
       runButton.disabled = false;
       hangupButton.hidden = true;
+      recognition.abort();
     },
   };
 

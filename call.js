@@ -53,7 +53,7 @@ const main = async () => {
     let deaths = data.deaths;
     let todayDeaths = data.todayDeaths;
     
-    return "\nTotal cases: " + totalCases + "\nToday cases: " + todayCases + "\nTotal deaths: " + deaths + "\nToday deaths: " + todayDeaths;
+    return "\nTotal cases number is " + totalCases + ". Today's number of cases is " + todayCases + ". Total deaths so far is " + deaths + ". And today's number of deaths is " + todayDeaths;
   });
 
   app.setExternal("get_available_flight", async (args)=> {

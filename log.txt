@@ -4,11 +4,11 @@ ai: Hello there! I'm Dash, your AI assistant to answer all your travel concerns.
   {
     "type": "Data",
     "skill": "6db6264d7147c6cdb572e22d6b3fafd6:v2",
-    "weight": 0.99988,
+    "weight": 0.99902,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 25
+      "end": 20
     },
     "factType": "flight_info",
     "data": {
@@ -22,43 +22,25 @@ ai: Hello there! I'm Dash, your AI assistant to answer all your travel concerns.
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 3
+      "end": 2
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
   }
 ]
-human: from Singapore to Jakarta
+human: Singapore to Jakarta
 ai: Here are the flights I've found within the next week. 
+---Flight 1---
+Duration: PT21H25M
+Itinerary:
+Depart from YYZ at 2021-12-24T20:35:00 - Arrive in LHR at 2021-12-25T08:30:00
+Depart from LHR at 2021-12-25T09:50:00 - Arrive in SIN at 2021-12-26T07:00:00
+
+---Flight 2---
+Duration: PT20H
+Itinerary:
+Depart from LHR at 2021-12-25T06:15:00 - Arrive in CDG at 2021-12-25T08:25:00
+Depart from CDG at 2021-12-25T11:20:00 - Arrive in SIN at 2021-12-26T06:00:00
+
 ai: Anything else I can help you with?
-[
-  {
-    "type": "Intent",
-    "skill": "sentiment",
-    "weight": -1,
-    "likelihood": -1,
-    "location": {
-      "start": 0,
-      "end": 0
-    },
-    "intent": null,
-    "state": "negative",
-    "sentenceType": "statement"
-  },
-  {
-    "type": "Intent",
-    "skill": "6db6264d7147c6cdb572e22d6b3fafd6:v2",
-    "weight": 0.95124,
-    "likelihood": 1,
-    "location": {
-      "start": -1,
-      "end": -1
-    },
-    "intent": "no",
-    "state": "positive",
-    "sentenceType": "statement"
-  }
-]
-human: no
-ai: Have a nice day! Bye!

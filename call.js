@@ -41,14 +41,38 @@ const main = async () => {
   app.setExternal("get_available_flight", async (args)=> {
     //TODO: implement your external function here
     console.log(args);
+    console.log(args);
+    let returnString = "";
     let data = await getFlightOffers();
     if (!data || data.length <= 0) {
-        return "Sorry, no available flights are found at this time. Please try again later."
+      return "Sorry, no available flights are found at this time. Please try again later."
+    }else{
+      let flightOffers = [];
+      for(let i=0; i < data.length; i+=1){
+        for (let j=0; j< data[i].segments.length; j++){
+          let segment = data[i].segments[j];
+          let isSame = false;
+          for (let k=0; k< flightOffers.length; k++){
+            if (flightOffers[k].departure.iataCode === segment.departure.iataCode && flightOffers[k].arrival.iataCode === segment.arrival.iataCode){
+              isSame = true;
+              break;
+            }
+          }
+          if (!isSame && flightOffers.length < 4){
+            flightOffers.push({departure: segment.departure, arrival: segment.arrival, duration: data[i].duration});
+          }
+        }
+      }
+      flightOffers = _.groupBy(flightOffers, 'duration');
+      Object.keys(flightOffers).forEach((duration, i) => {
+        returnString += `\n---Flight ${i+1}---\nDuration: ${duration}\nItinerary:`;
+        flightOffers[duration].map((segment) => {
+          returnString +=`\nDepart from ${segment.departure.iataCode} at ${segment.departure.at} - Arrive in ${segment.arrival.iataCode} at ${segment.arrival.at}`;
+        });
+        returnString += "\n";
+      });
     }
-    //console.log(data);
-    return `\n---Flight 1---\nPrice: ${data[0].price.total}${data[0].price.currency}\nDuration: ${data[0].itineraries[0].duration}\nItinerary: ${data[0].itineraries[0].segments[0].departure.iataCode} - ${data[0].itineraries[0].segments[0].arrival.iataCode} - ${data[0].itineraries[0].segments[1].arrival.iataCode}
-    \n\n---Flight 2---\nPrice: ${data[1].price.total}${data[1].price.currency}\nDuration: ${data[1].itineraries[0].duration}\nItinerary: ${data[1].itineraries[0].segments[0].departure.iataCode} - ${data[1].itineraries[0].segments[0].arrival.iataCode} - ${data[1].itineraries[0].segments[1].arrival.iataCode}
-    \n\n---Flight 3---\nPrice: ${data[2].price.total}${data[2].price.currency}\nDuration: ${data[2].itineraries[0].duration}\nItinerary: ${data[2].itineraries[0].segments[0].departure.iataCode} - ${data[2].itineraries[0].segments[0].arrival.iataCode} - ${data[2].itineraries[0].segments[1].arrival.iataCode}`
+    return returnString;
   });
 
   await app.start({ concurrency: 10 });

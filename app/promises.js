@@ -46,14 +46,29 @@ async function getTravelRestrictions(accessToken, country) {
 
 async function getFlightOffers() {
   try {
-    const res = await amadeus.shopping.flightOffersSearch.get({
-      originLocationCode: "YYZ",
-      destinationLocationCode: "SIN",
-      departureDate: "2021-12-23",
-      adults: "1",
-      currencyCode:"CAD",
-      max:3
-    });
+    const res = await amadeus.shopping.availability.flightAvailabilities.post(JSON.stringify({
+        "originDestinations": [
+          {
+            "id": "1",
+            "originLocationCode": "YYZ",
+            "destinationLocationCode": "SIN",
+            "departureDateTime": {
+              "date": "2021-12-24",
+              "time": "21:15:00"
+            }
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "travelerType": "ADULT"
+          }
+        ],
+        "sources": [
+          "GDS"
+        ]
+      }));
+
     return res.data;
   } catch (error) {
     console.error(error);

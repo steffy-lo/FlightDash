@@ -49,7 +49,7 @@ async function getFlightOffers() {
     const res = await amadeus.shopping.flightOffersSearch.get({
       originLocationCode: "YYZ",
       destinationLocationCode: "SIN",
-      departureDate: "2021-12-22",
+      departureDate: "2021-12-23",
       adults: "1",
       currencyCode:"CAD",
       max:3

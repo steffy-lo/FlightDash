@@ -4,16 +4,25 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js \"chat\""
+    "start": "node index.js \"chat\"",
+    "server": "node call.js",
+    "client": "parcel client/index.html",
+    "prod": "concurrently --kill-others \"npm:server\" \"npm:client\""
   },
   "devDependencies": {
     "@dasha.ai/cli": ">=0.1.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "parcel": "^2.0.0",
+    "concurrently": "^6.2.1"
   },
   "dependencies": {
     "@dasha.ai/sdk": "^0.6.5",
     "amadeus": "^5.7.1",
     "axios": "^0.24.0",
-    "dotenv": "^10.0.0"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "sip.js": "^0.20.0",
+    "uuid": "^8.3.2"
   }
 }

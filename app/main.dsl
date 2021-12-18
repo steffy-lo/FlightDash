@@ -79,6 +79,14 @@ node check_flights {
         set $flight_info = #messageGetData("flight info")[0]?.value??"";
         set $available_flight = external get_available_flight($flight_info);
         #say("flight_found", {available_flight: $available_flight});
+        #say("more_questions");
+        wait *;
+    }
+    transitions {
+        flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
+        covid19_cases: goto covid19_cases on #messageHasData("covid");
+        bye: goto bye on #messageHasIntent("no");
     }
 }
 
@@ -87,6 +95,14 @@ node check_travel_restrictions {
         set $country = #messageGetData("country")[0]?.value??"";
         set $travel_restriction = external get_travel_restrictions($country);
         #say("explain_restriction", {travel_restriction: $travel_restriction, country: $country});
+        #say("more_questions");
+        wait *;
+    }
+    transitions {
+        flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
+        covid19_cases: goto covid19_cases on #messageHasData("covid");
+        bye: goto bye on #messageHasIntent("no");
     }
 }
 
@@ -95,6 +111,14 @@ node check_covid {
         set $country = #messageGetData("country")[0]?.value??"";
         set $covid_situation = external get_covid_situation($country);
         #say("explain_covid", {covid_situation: $covid_situation, country: $country});
+        #say("more_questions");
+        wait *;
+    }
+    transitions {
+        flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
+        covid19_cases: goto covid19_cases on #messageHasData("covid");
+        bye: goto bye on #messageHasIntent("no");
     }
 }
 
@@ -112,6 +136,13 @@ node no
     do 
     {
         #say("no");
+        exit;
+    }
+}
+
+node bye {
+    do {
+        #say("have_a_nice_day");
         exit;
     }
 }

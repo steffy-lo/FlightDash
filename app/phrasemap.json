@@ -12,7 +12,7 @@
       "greeting": 
       {
         "first":
-        [{ "text": "Hello there! I'm Dash, your A.I assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes." }],
+        [{ "text": "Hello there! I'm Dash, your AI assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes." }],
         "repeat":
         [{"text": "I'm always here ready to help for your travel advisory. You can ask me about flight availability, travel restrictions, or any questions you may have for travelling purposes." }]
       },
@@ -77,6 +77,17 @@
           { "id": "country", "type": "dynamic"},
           { "text": "."},
           { "id": "covid_situation", "type": "dynamic"}
+        ]
+      },
+
+      "more_questions": {
+        "first":
+        [
+          { "text": "Anything else I can help you with?"}
+        ],
+        "repeat":
+        [
+          { "text": "I was just saying, anything else I can help you with?"}
         ]
       },
 
@@ -149,6 +160,11 @@
           "text": "Actually I am an advanced AI. Just don't tell my boss or I'll be out of a job."
         }
       ],
+      "have_a_nice_day": [
+        {
+          "text": "Have a nice day! Bye!"
+        }
+      ],
       "is_that_all": [{ "text": "Is that all?" }],
       "repeat_question": [{ "text": "Can you repeat the question, please?" }]
     },
@@ -162,8 +178,10 @@
       "flight_found": {},
       "explain_restriction": {},
       "explain_covid": {},
+      "more_questions": {},
       "yes": {},
       "no": {},
+      "have_a_nice_day": {},
       "i_will_call_back": {},
       "see_you_soon": {},
       "hello": {},

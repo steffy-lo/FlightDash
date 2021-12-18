@@ -1,18 +1,18 @@
 ####################################################################################################
-ai: Hello there! I'm Dash, your A.I assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
+ai: Hello there! I'm Dash, your AI assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
 [
   {
     "type": "Data",
     "skill": "76e51652f5378dc1ddc72855758453cf:v2",
-    "weight": 0.99498,
+    "weight": 0.97192,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 18
+      "end": 19
     },
-    "factType": "travel_restrictions",
+    "factType": "flight_availability",
     "data": {
-      "value": "travel restrictions"
+      "value": "flight availability"
     }
   },
   {
@@ -29,21 +29,21 @@ ai: Hello there! I'm Dash, your A.I assistant to answer all your travel concerns
     "sentenceType": "statement"
   }
 ]
-human: travel resrictions
-ai: No problem, I can check that for you. Which country are you looking at?
+human: flight availability
+ai: I'll check the flight availability for you within the next week. Where are you from and where are you flying to?
 [
   {
     "type": "Data",
     "skill": "76e51652f5378dc1ddc72855758453cf:v2",
-    "weight": 0.36354,
+    "weight": 0.83815,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 2
+      "end": 20
     },
-    "factType": "country",
+    "factType": "flight_info",
     "data": {
-      "value": "SG"
+      "value": "Toronto to Singapore"
     }
   },
   {
@@ -53,15 +53,11 @@ ai: No problem, I can check that for you. Which country are you looking at?
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 0
+      "end": 2
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
   }
 ]
-human: sg
-ai: Here are the travel restrictions I've found for SG.
-Authorities in Singapore have been relying on strict social distancing measures to tackle period COVID-19 outbreaks. Singapore's healthcare system is well-equipped which helped authorities quickly implement health screening and testing measures. Authorities have planned to ease restrictions further in the near-term to allow most economic activities to restart after a majority of the population get vaccinated.
-
-Disease Risk Level: High.
+human: Toronto to Singapore

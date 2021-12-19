@@ -22,13 +22,13 @@ API_KEY=your_api_key
 API_SECRET=your_api_secret
 ```
 
-3. To start a text chat, run:
+5. To start a text chat, run:
 
 ```sh
 npm start chat
 ```
 
-4. To receive a phone call from Dasha in-browser, run:
+6. To receive a phone call from Dasha in-browser, run:
 
 ```sh
 npm run prod

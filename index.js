@@ -46,7 +46,6 @@ async function main()
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
 
-    console.log(data.areaAccessRestriction);
     return `\n${summary}\n\nDisease Risk Level: ${diseaseRiskLevel}.`;
   });
 
@@ -86,7 +85,14 @@ async function main()
     exit.replace(/<[^>]*>/gi, "\n");
     console.log(entry, exit);
 
-    return `\nThe entry requirements are: ${entry}\n\nThe exit requirements are: ${exit}.`;
+    let result = "";
+    if (args.entry_exit_val.includes("entry")) {
+      result += `\nThe entry requirements are: ${entry}\n\n`;
+    }
+    if (args.entry_exit_val.includes("exit")) {
+      result += `The exit requirements are: ${exit}.`;
+    }
+    return result
   });
 
   app.setExternal("get_covid_situation", async (args)=> {

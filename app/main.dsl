@@ -15,6 +15,8 @@ context
     available_flight: string = "";
     travel_restriction: string = "";
     covid_situation: string = "";
+    entry_exit_requirement: string = "";
+    entry_exit_val: string = "";
 
 }
 
@@ -22,6 +24,7 @@ context
 external function get_travel_restrictions(country: string): string;
 external function get_covid_situation(country: string): string;
 external function get_available_flight(flight_info: string): string;
+external function get_entry_exit(country: string, entry_exit_val: string): string;
 
 // lines 28-42 start node 
 start node root 
@@ -39,6 +42,19 @@ start node root
         check_flights: goto check_flights on #messageHasData("flight_info");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
+        entry_exit_requirements: goto entry_exit_requirements on #messageHasData("entry_exit_prompt");
+    }
+}
+
+node entry_exit_requirements {
+    do {
+        set $entry_exit_val = #messageGetData("entry_exit_prompt")[0]?.value??"";
+        #say("which_country");
+        wait *;
+    }
+    transitions
+    {
+        check_entry_exit_requirements: goto check_entry_exit_requirements on #messageHasData("country");
     }
 }
 
@@ -88,6 +104,25 @@ node check_flights {
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
+        entry_exit_requirements: goto entry_exit_requirements on #messageHasData("entry_exit_prompt");
+        bye: goto bye on #messageHasIntent("no");
+    }
+}
+
+node check_entry_exit_requirements {
+     do {
+        set $country = #messageGetData("country")[0]?.value??"";
+        set $entry_exit_requirement = external get_entry_exit($country, $entry_exit_val);
+        #say("explain_requirements", {entry_exit_requirement: $entry_exit_requirement, country: $country, entry_exit_val: $entry_exit_val});
+        #say("more_questions");
+        wait *;
+    }
+    transitions {
+        check_flights: goto check_flights on #messageHasData("flight_info");
+        flight_availability: goto flight_availability on #messageHasData("flight_availability");
+        travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
+        covid19_cases: goto covid19_cases on #messageHasData("covid");
+        entry_exit_requirements: goto entry_exit_requirements on #messageHasData("entry_exit_prompt");
         bye: goto bye on #messageHasIntent("no");
     }
 }
@@ -105,6 +140,7 @@ node check_travel_restrictions {
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
+        entry_exit_requirements: goto entry_exit_requirements on #messageHasData("entry_exit_prompt");
         bye: goto bye on #messageHasIntent("no");
     }
 }
@@ -122,6 +158,7 @@ node check_covid {
         flight_availability: goto flight_availability on #messageHasData("flight_availability");
         travel_restrictions: goto travel_restrictions on #messageHasData("travel_restrictions"); 
         covid19_cases: goto covid19_cases on #messageHasData("covid");
+        entry_exit_requirements: goto entry_exit_requirements on #messageHasData("entry_exit_prompt");
         bye: goto bye on #messageHasIntent("no");
     }
 }

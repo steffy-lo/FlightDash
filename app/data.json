@@ -149,6 +149,37 @@
         "Are there any (flights)[flight_availability]?"
       ]
     },
+    "entry_exit_prompt": {
+      "open_set": true,
+      "values": [
+        {
+          "value": "entry",
+          "synonyms": ["arrival", "entering", "enter"]
+        },
+        {
+          "value": "exit",
+          "synonyms": ["departure", "leaving", "leave"]
+        },
+        {
+          "value": "entry and exit",
+          "synonyms": ["arrival and departure", "entering and leaving"]
+        },
+        {
+          "value": "exit and entry",
+          "synonyms": ["departure and arrival", "leaving and entering"]
+        }
+      ],
+      "includes": [
+        "What are the (entry)[entry_exit_prompt] requirements?",
+        "What do I need for (entry)[entry_exit_prompt] to the country?",
+        "What are the (exit)[entry_exit_prompt] requirements?",
+        "What do I need for (exit)[entry_exit_prompt] to the country?",
+        "What are the (exit and entry)[entry_exit_prompt] requirements?",
+        "What do I need for (exit and entry)[entry_exit_prompt] to the country?",
+        "What are the (entry and exit)[entry_exit_prompt] requirements?",
+        "What do I need for (entry and exit)[entry_exit_prompt] to the country?"
+      ]
+    },
     "covid": {
       "open_set": true,
       "values": [

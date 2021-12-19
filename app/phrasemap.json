@@ -63,6 +63,27 @@
         ]
       },
 
+      "explain_requirements": {
+        "first":
+        [
+          { "text": "Here are the "},
+          { "id": "entry_exit_val", "type": "dynamic"},
+          { "text": " requirements I've found for "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "entry_exit_requirement", "type": "dynamic"}
+        ],
+        "repeat":
+        [
+          { "text": "I was just saying, here are the "},
+          { "id": "entry_exit_val", "type": "dynamic"},
+          { "text": " requirements I've found for "},
+          { "id": "country", "type": "dynamic"},
+          { "text": "."},
+          { "id": "entry_exit_requirement", "type": "dynamic"}
+        ]
+      },
+
       "explain_covid": {
         "first":
         [
@@ -177,6 +198,7 @@
       "which_country": {},
       "flight_found": {},
       "explain_restriction": {},
+      "explain_requirements": {},
       "explain_covid": {},
       "more_questions": {},
       "yes": {},

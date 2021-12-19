@@ -1,2 +1,68 @@
 ####################################################################################################
 ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all your travel concerns. You can ask me about flight availability, travel restrictions, or any other questions you may have for travelling purposes.
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.9999,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 14
+    },
+    "factType": "entry_exit_prompt",
+    "data": {
+      "value": "entry and exit"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 3
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: entry and exit requirements
+ai: No problem, I can check that for you. Which country are you looking at?
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.65952,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "factType": "country",
+    "data": {
+      "value": "Japan"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: japan
+ai: Here are the entry and exit requirements I've found for Japan.
+The entry requirements are: <p>Most non-residence status foreign nationals, excluding transit travellers, who were in the <strong>United Kingdom</strong> and <strong>158 other countries</strong> within the 14 days prior to applying for landing permits have been banned entry.</p> <p>All visas already issued under “Business Track”, “Residence Track”, or “New measures for border enforcement (4)” have been suspended. Many visa exemption measures and previously issued entry visas have also been suspended. Check <a href="https://www.mofa.go.jp/ca/fna/page4e_001053.html" target="_blank" rel="noopener">here</a> for details on restricted entry and suspended visas.</p> <p>All non-Japanese nationals, including those with permanent residency in Japan, who were in <strong>Afghanistan, India, Sri Lanka, Nepal, Bangladesh</strong> or the <strong>Maldives</strong> within 14 days prior to applying for permission to enter have been banned from entry into Japan until further notice. Permanent residents with valid re-entry permits who left for <strong>India</strong> or <strong>Nepal</strong> before 14 May, <strong>Maldives</strong> or <strong>Bangladesh</strong> before 20 May, <strong>Sri Lanka</strong> before 21 May, or <strong>Afghanistan</strong> before 3 June are allowed to re-enter Japan along with other special exceptional cases.</p>
+
+The exit requirements are: No exit requirements..
+ai: Anything else I can help you with?

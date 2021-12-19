@@ -4,15 +4,29 @@ ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all y
   {
     "type": "Data",
     "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
-    "weight": 0.99967,
+    "weight": 0.99942,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 24
+      "end": 23
     },
-    "factType": "flight_info",
+    "factType": "travel_restrictions",
     "data": {
-      "value": "from london to singapore"
+      "value": "travel restrictions"
+    }
+  },
+  {
+    "type": "Data",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 1,
+    "likelihood": 1,
+    "location": {
+      "start": 24,
+      "end": 31
+    },
+    "factType": "country",
+    "data": {
+      "value": "Germany"
     }
   },
   {
@@ -29,22 +43,21 @@ ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all y
     "sentenceType": "statement"
   }
 ]
-human: from london to singapore
-ai: Here are the flights I've found for today.Sorry, no available flights are found at this time. Please try again later.
-ai: Anything else I can help you with?
+human: travel restrictions for Germany
+ai: No problem, I can check that for you. Which country are you looking at?
 [
   {
     "type": "Data",
     "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
-    "weight": 0.99978,
+    "weight": 0.52974,
     "likelihood": 1,
     "location": {
       "start": 0,
-      "end": 25
+      "end": 7
     },
-    "factType": "flight_info",
+    "factType": "country",
     "data": {
-      "value": "from toronto to singapore"
+      "value": "Germany"
     }
   },
   {
@@ -54,68 +67,20 @@ ai: Anything else I can help you with?
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 3
+      "end": 0
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
   }
 ]
-human: from toronto to singapore
-ai: Here are the flights I've found for today.Sorry, no available flights are found at this time. Please try again later.
-ai: Anything else I can help you with?
-[
-  {
-    "type": "Data",
-    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
-    "weight": 0.99859,
-    "likelihood": 1,
-    "location": {
-      "start": 0,
-      "end": 20
-    },
-    "factType": "flight_info",
-    "data": {
-      "value": "jakarta to singapore"
-    }
-  },
-  {
-    "type": "Intent",
-    "skill": "sentiment",
-    "weight": -1,
-    "likelihood": -1,
-    "location": {
-      "start": 0,
-      "end": 2
-    },
-    "intent": null,
-    "state": "neutral",
-    "sentenceType": "statement"
-  }
-]
-human: jakarta to singapore
-ai: Here are the flights I've found for today.
----Flight 1---
-Duration: PT1H50M
-Itinerary:
-Depart from CGK at 2021-12-18T22:05:00 - Arrive in SIN at 2021-12-19T00:55:00
+human: Germany
+ai: Here are the travel restrictions I've found for Germany.
+Germany confirmed its first COVID-19 case on 28 January 2020 after a man from Starnberg, Bavaria, tested positive for the virus. While most measures on social contact, businesses and domestic tourism have been eased, health officials declared in August 2021 that the country has entered a "fourth wave" of the COVID-19 outbreak following the spread of the delta virus variant.
 
+Disease Risk Level: High.
 ai: Anything else I can help you with?
 [
-  {
-    "type": "Data",
-    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
-    "weight": 0.99824,
-    "likelihood": 1,
-    "location": {
-      "start": 0,
-      "end": 19
-    },
-    "factType": "flight_info",
-    "data": {
-      "value": "london to singapore"
-    }
-  },
   {
     "type": "Intent",
     "skill": "sentiment",
@@ -123,21 +88,25 @@ ai: Anything else I can help you with?
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 2
+      "end": 0
     },
     "intent": null,
-    "state": "neutral",
+    "state": "negative",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "a93ef9ab0193d7b4af69ee961f2215e3:v2",
+    "weight": 0.99695,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "no",
+    "state": "positive",
     "sentenceType": "statement"
   }
 ]
-human: london to singapore
-ai: Here are the flights I've found for today.
----Flight 1---
-Duration: PT12H45M
-Itinerary:
-Depart from YXU at 2021-12-18T10:05:00 - Arrive in YYZ at 2021-12-18T10:50:00
-Depart from YYZ at 2021-12-18T12:00:00 - Arrive in EWR at 2021-12-18T13:35:00
-Depart from JFK at 2021-12-18T20:55:00 - Arrive in SIN at 2021-12-19T11:50:00
-Depart from YTZ at 2021-12-18T14:10:00 - Arrive in EWR at 2021-12-18T15:40:00
-
-ai: Anything else I can help you with?
+human: no
+ai: Have a nice day! Bye!

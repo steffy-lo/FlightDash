@@ -14,6 +14,14 @@ npm install
 npx dasha account login
 ```
 
+3. Create or log into your Amadeus account at: https://developers.amadeus.com/
+
+4. Create a .env file with your Amadeus credentials and place it under `~/FlightDash/.env`
+```sh
+API_KEY=your_api_key
+API_SECRET=your_api_secret
+```
+
 3. To start a text chat, run:
 
 ```sh

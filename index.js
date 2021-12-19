@@ -2,7 +2,7 @@ const dasha = require("@dasha.ai/sdk");
 const fs = require("fs");
 const _ = require("lodash");
 const airports = require('airport-codes');
-const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData, getIATA } = require("./app/promises");
+const { getAccessToken, getTravelRestrictions, getFlightOffers, getCovidData } = require("./app/promises");
 
 async function main() 
 {
@@ -35,6 +35,10 @@ async function main()
       "Australia": "AU",
       "Vietnam": "VN",
       "Thailand": "TH"
+    }
+
+    if (!countryMappings[args.country]) {
+      return "Sorry, we don't recognize that country. Please try again."
     }
     let accessToken = await getAccessToken();
     let data = await getTravelRestrictions(accessToken, countryMappings[args.country]);

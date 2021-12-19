@@ -45,10 +45,48 @@ async function main()
 
     let summary = data.summary.substring(3, data.summary.length - 4); //in HTML
     let diseaseRiskLevel = data.diseaseRiskLevel;
-    let entry = data.areaAccessRestriction.entry.text; //in HTML
-    let exit = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements."; //in HTML
+
     console.log(data.areaAccessRestriction);
     return `\n${summary}\n\nDisease Risk Level: ${diseaseRiskLevel}.`;
+  });
+
+  //Entry and exit restrictions
+  app.setExternal("get_entry_exit", async (args)=> {
+    console.log(`OK, ${args.country} is it? Let me check...`);
+    const countryMappings = {
+      "Singapore": "SG",
+      "United States": "US",
+      "Canada": "CA",
+      "China": "CN",
+      "India": "IN",
+      "United Kingdom": "UK",
+      "Indonesia": "IN",
+      "Russia": "RU",
+      "Japan": "JP",
+      "South Korea": "KR",
+      "Italy": "IT",
+      "Germany": "DE",
+      "Spain": "ES",
+      "France": "FR",
+      "Australia": "AU",
+      "Vietnam": "VN",
+      "Thailand": "TH"
+    }
+
+    if (!countryMappings[args.country]) {
+      return "Sorry, we don't recognize that country. Please try again."
+    }
+    let accessToken = await getAccessToken();
+    let data = await getTravelRestrictions(accessToken, countryMappings[args.country]);
+
+    let entry = data.areaAccessRestriction.entry.text? data.areaAccessRestriction.entry.text : "No entry requirements.";
+    let exit = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements.";
+
+    entry.replace(/<[^>]*>/gi, "\n");
+    exit.replace(/<[^>]*>/gi, "\n");
+    console.log(entry, exit);
+
+    return `\nThe entry requirements are: ${entry}\n\nThe exit requirements are: ${exit}.`;
   });
 
   app.setExternal("get_covid_situation", async (args)=> {

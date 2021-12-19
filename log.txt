@@ -4,15 +4,15 @@ ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all y
   {
     "type": "Data",
     "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
-    "weight": 0.9999,
+    "weight": 0.71737,
     "likelihood": 1,
     "location": {
-      "start": 0,
-      "end": 14
+      "start": 14,
+      "end": 25
     },
     "factType": "entry_exit_prompt",
     "data": {
-      "value": "entry and exit"
+      "value": "check entry"
     }
   },
   {
@@ -22,20 +22,165 @@ ai: Hello there! I'm DASH, your Artificial Intelligent assistant to answer all y
     "likelihood": -1,
     "location": {
       "start": 0,
-      "end": 3
+      "end": 6
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": "ping",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: Hi, I want to check entry requirements
+ai: No problem, I can check that for you. Which country are you looking at?
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.64733,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 6
+    },
+    "factType": "country",
+    "data": {
+      "value": "Canada"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
     },
     "intent": null,
     "state": "neutral",
     "sentenceType": "statement"
   }
 ]
-human: entry and exit requirements
+human: Canada
+ai: Here are the check entry requirements I've found for Canada.
+The entry requirements are: The United States (US) and Canadian governments agreed to close the US-Canada border to unvaccinated travellers until 21 September. Fully vaccinated travellers, those engaged in commercial trade and those with cross-border work permits were unaffected. All travellers who are fully vaccinated against COVID-19 will be permitted to enter Canada without quarantine or post-arrival testing. Foreign nationals who are immediate family members of Canadian citizens or permanent residents and who do not have or display any symptoms of COVID-19, as well as air crew, diplomats, seasonal workers, caregivers and international students are also exempt from the entry ban. Airline passengers will be permitted to transit through Canadian airports. An ongoing ban on traffic of cruise ships and pleasure crafts with a capacity of at least 100 passengers in Canada's territorial waters was extended until 1 November.
+
+
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.97911,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 20
+    },
+    "factType": "entry_exit_prompt",
+    "data": {
+      "value": "Check entry and exit"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: Check entry and exit requirements
 ai: No problem, I can check that for you. Which country are you looking at?
 [
   {
     "type": "Data",
     "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
-    "weight": 0.65952,
+    "weight": 0.671,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "factType": "country",
+    "data": {
+      "value": "Italy"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 0
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: Italy
+ai: Here are the Check entry and exit requirements I've found for Italy.
+The entry requirements are: Entry is permitted from "Category C" countries - EU and Schengen Area countries, Andorra, Monaco and Israel - provided that arrivals only transited or stayed in countries where entry is permitted in the last 14 days. There are no restrictions on entry from San Marino and Vatican City ("Category A"). Travellers from "Category D" countries - Albania, Armenia, Australia, Azerbaijan, Bosnia and Herzegovina, Brunei, Canada, Hong Kong, Japan, Jordan, Kosovo, Lebanon, Macau, Moldova, Montenegro, New Zealand, North Macedonia, Qatar, Saudi Arabia, Serbia, Singapore, South Korea, Taiwan, Ukraine, the United Arab Emirates (UAE), the United Kingdom (UK) and the United States (US) - are also permitted entry. However, "Category D" travellers without proof of vaccination and negative test for COVID-19 are generally subject to quarantine. Non-essential travel from other non-EU/Schengen countries ("Category E") is banned. EU nationals and long-term residents and those seeking to travel for work, absolute urgency, health, study or return home are exempt. Travellers who stayed or transited in Bangladesh, India or Sri Lanka in the last 14 days are banned from entering Italy. Students, parents of minor children residing in Italy, partners of Italian residents, those who had registered residence in Italy before 28 August and Italian nationals registered in the Registry of Italians Residing Abroad (AIRE) are exempt. Travellers who stayed or transited in Brazil in the last 14 days are banned from entering Italy. Students, military personnel, parents of minor children residing in Italy, only those who had registered residence in Italy before 13 February are exempt and permitted entry.
+
+The exit requirements are: Leisure travel to countries in Category E - non-EU countries excluding Israel and Category D countries - is not permitted. Travelling to Category E countries is only permitted for work, health, study, absolute urgency or return home..
+ai: Anything else I can help you with?
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.90968,
+    "likelihood": 1,
+    "location": {
+      "start": 0,
+      "end": 9
+    },
+    "factType": "entry_exit_prompt",
+    "data": {
+      "value": "Only exit"
+    }
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 2
+    },
+    "intent": null,
+    "state": "neutral",
+    "sentenceType": "statement"
+  }
+]
+human: Only exit requirements
+ai: No problem, I can check that for you. Which country are you looking at?
+[
+  {
+    "type": "Data",
+    "skill": "05ec363a0381fece56993adc8ad33d4e:v2",
+    "weight": 0.65939,
     "likelihood": 1,
     "location": {
       "start": 0,
@@ -60,9 +205,6 @@ ai: No problem, I can check that for you. Which country are you looking at?
     "sentenceType": "statement"
   }
 ]
-human: japan
-ai: Here are the entry and exit requirements I've found for Japan.
-The entry requirements are: <p>Most non-residence status foreign nationals, excluding transit travellers, who were in the <strong>United Kingdom</strong> and <strong>158 other countries</strong> within the 14 days prior to applying for landing permits have been banned entry.</p> <p>All visas already issued under “Business Track”, “Residence Track”, or “New measures for border enforcement (4)” have been suspended. Many visa exemption measures and previously issued entry visas have also been suspended. Check <a href="https://www.mofa.go.jp/ca/fna/page4e_001053.html" target="_blank" rel="noopener">here</a> for details on restricted entry and suspended visas.</p> <p>All non-Japanese nationals, including those with permanent residency in Japan, who were in <strong>Afghanistan, India, Sri Lanka, Nepal, Bangladesh</strong> or the <strong>Maldives</strong> within 14 days prior to applying for permission to enter have been banned from entry into Japan until further notice. Permanent residents with valid re-entry permits who left for <strong>India</strong> or <strong>Nepal</strong> before 14 May, <strong>Maldives</strong> or <strong>Bangladesh</strong> before 20 May, <strong>Sri Lanka</strong> before 21 May, or <strong>Afghanistan</strong> before 3 June are allowed to re-enter Japan along with other special exceptional cases.</p>
-
-The exit requirements are: No exit requirements..
+human: Japan
+ai: Here are the Only exit requirements I've found for Japan.The exit requirements are: No exit requirements.
 ai: Anything else I can help you with?

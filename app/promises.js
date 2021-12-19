@@ -20,7 +20,6 @@ async function getAccessToken() {
         },
       }
     );
-    console.log(res.data.access_token);
     return res.data.access_token;
   } catch (error) {
     console.log(error);

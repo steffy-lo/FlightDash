@@ -78,16 +78,15 @@ async function main()
     let accessToken = await getAccessToken();
     let data = await getTravelRestrictions(accessToken, countryMappings[args.country]);
 
-    let entry = data.areaAccessRestriction.entry.text? data.areaAccessRestriction.entry.text : "No entry requirements.";
-    let exit = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements.";
+    let entryText = data.areaAccessRestriction.entry.text? data.areaAccessRestriction.entry.text : "No entry requirements.";
+    let exitText = data.areaAccessRestriction.exit.text? data.areaAccessRestriction.exit.text : "No exit requirements";
 
-    entry.replace(/<[^>]*>/gi, "\n");
-    exit.replace(/<[^>]*>/gi, "\n");
-    console.log(entry, exit);
+    let entry = entryText.replace(/<\/?p[^>]*>/g, "");
+    let exit = exitText.replace(/<\/?p[^>]*>/g, "");
 
     let result = "";
     if (args.entry_exit_val.includes("entry")) {
-      result += `\nThe entry requirements are: ${entry}\n\n`;
+      result += `\n\nThe entry requirements are: ${entry}\n\n`;
     }
     if (args.entry_exit_val.includes("exit")) {
       result += `The exit requirements are: ${exit}.`;

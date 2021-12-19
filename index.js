@@ -66,7 +66,7 @@ async function main()
     let returnString = "";
     let data = await getFlightOffers(originIATAs, destinationIATAs);
     if (!data || data.length <= 0) {
-      return "Sorry, no available flights are found at this time. Please try again later."
+      return "\nSorry, no available flights are found at this time. Please try again later."
     }else{
       let flightOffers = [];
       for(let i=0; i < data.length; i+=1){
